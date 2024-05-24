@@ -23,8 +23,7 @@
     {
         "title": "The Catcher in the Rye",
         "author": "J.D. Salinger",
-        "available": "yes",
+        "available": true,
         "pages": 224,
         "isbn": "9780316769488"
-    }
-]
+    }]
