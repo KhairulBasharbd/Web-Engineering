@@ -34,7 +34,7 @@ echo "<center><table border='1', summary='This table displays'>
         <th>ISBN</th>
     </tr>";
 
-foreach($books as $book)
+for($i=0 ;$i<count($books); $i++)
 {   
     echo "<tr>";
         echo"    <td>".$book["title"]."</td>";
@@ -42,8 +42,15 @@ foreach($books as $book)
         echo"    <td>".$book["available"]."</td>";
         echo"    <td>".$book["pages"]."</td>";
         echo"    <td>".$book["isbn"]."</td>";
-        echo "<td><form method=\"post\" action=\"/3_BookForm_for_adding_deleting_item/update.php \"><button type=\"submit\" name=\"update\">Update</button></form></td>";
-        echo "<td><form method=\"post\" action=\"/1_Test \"><button type=\"submit\" name=\"delete\">Delete</button></form></td>";
+
+
+        echo '<td><form method="post" action="/3_BookForm_for_adding_deleting_item/update.php "><button type="submit" name="update">Update</button></form></td>';
+        echo '<td>
+                <form method="post" action="/1_Test ">
+                    <a href =  "delete.php?id= <?php echo $i; ?>> Delete
+                    </a>
+                </form>
+            </td>';
         echo"</ tr>";
 
 }
