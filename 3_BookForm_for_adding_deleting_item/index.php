@@ -37,21 +37,28 @@ echo "<center><table border='1', summary='This table displays'>
 for($i=0 ;$i<count($books); $i++)
 {   
     echo "<tr>";
-        echo"    <td>".$book["title"]."</td>";
-        echo"    <td>".$book["author"]."</td>";
-        echo"    <td>".$book["available"]."</td>";
-        echo"    <td>".$book["pages"]."</td>";
-        echo"    <td>".$book["isbn"]."</td>";
+        echo"    <td>".$books[$i]["title"]."</td>";
+        echo"    <td>".$books[$i]["author"]."</td>";
+        echo"    <td>".$books[$i]["available"]."</td>";
+        echo"    <td>".$books[$i]["pages"]."</td>";
+        echo"    <td>".$books[$i]["isbn"]."</td>";
 
 
-        echo '<td><form method="post" action="/3_BookForm_for_adding_deleting_item/update.php "><button type="submit" name="update">Update</button></form></td>';
         echo '<td>
-                <form method="post" action="/1_Test ">
-                    <a href =  "delete.php?id= <?php echo $i; ?>> Delete
-                    </a>
-                </form>
-            </td>';
-        echo"</ tr>";
+            <form method="post" action="/1_Test"> 
+                <a href="update.php?id='.$i.'">
+                    Update
+                </a>
+            </form>
+        </td>';
+        echo '<td>
+            <form method="post">
+                <a href="delete.php?id='.$i.'">
+                    Delete
+                </a>
+            </form>
+        </td>';
+    echo"</ tr>";
 
 }
 echo"</table></center>";
