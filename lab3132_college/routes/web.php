@@ -24,3 +24,4 @@ Route::get('/', [EmployeeController::class, 'index'])->name('index');
 Route::get('/add',[EmployeeController::class,'create'])->name('add');
 
 Route::post('/add',[EmployeeController::class,'store'])->name('addEmployee');
+Route::post('/delete/{id}',[EmployeeController::class,'destroy'])->name('delete');

@@ -2,7 +2,7 @@
 
 @section('page-content')
     <legend>Add New Employee</legend>
-    <form method="post" action="{{route('addEmployee')}}">
+    <form method='post' action="{{route('addEmployee')}}">
         @csrf
         <div class="form-group">
             <label for="name" >Name</label>

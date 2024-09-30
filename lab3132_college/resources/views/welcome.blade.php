@@ -37,6 +37,13 @@
                 <td>{{$item ->email}}</td>
                 <td>{{$item ->mobile_no}}</td>
                 <td>{{$item ->address}}</td>
+                <td>
+                    <form class="btn btn-primary w-10" method='post' action="{{route('delete',$item->id)}}">
+                        @csrf
+
+                        <input type ='submit' value="Delete">
+                    </form>
+                </td>
             </tr>
             @endforeach
            
