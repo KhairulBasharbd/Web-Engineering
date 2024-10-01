@@ -14,7 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees=Employee::paginate(10);
+        return view('welcome')->with('employees',$employees);
     }
 
     /**
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return response()->view('employees.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255|string',
+            'email' => 'required|email|unique:employees,email',
+            'salary' => 'required|numeric',
+            'job_title' => 'required|string',
+            'joining_date' => 'required|date',
+            'address' => 'required|string',
+            'mobile_no' => 'required|numeric',
+
+        ]);
+       Employee::create($request->all());
+        return redirect()->route('index');
     }
 
     /**
@@ -78,8 +90,10 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Employee $employee, $id)
     {
-        //
+        $del_item = Employee::find($id);
+        $del_item->delete();
+        return redirect()->back();
     }
 }
